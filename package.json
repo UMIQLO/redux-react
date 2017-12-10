@@ -1,0 +1,34 @@
+{
+  "private": true,
+  "name": "es6-startkit",
+  "version": "1.0.2",
+  "license": "MIT",
+  "keywords": [
+    "babel",
+    "webpack"
+  ],
+  "homepage": "https://github.com/umiqlo",
+  "repository": "umiqlo/es6-startkit",
+  "author": "UMIQLO",
+  "description": "A ES6 Default Startkit.",
+  "scripts": {
+    "start": "webpack-dev-server --config webpack.config.js --progress --inline --colors --open",
+    "build": "webpack --config webpack-production.config.js --progress --colors"
+  },
+  "devDependencies": {
+    "babel-core": "^6.18.2",
+    "babel-eslint": "^7.1.1",
+    "babel-loader": "^6.2.7",
+    "babel-plugin-transform-flow-strip-types": "^6.18.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "eslint": "^3.11.1",
+    "eslint-config-airbnb-base": "^10.0.1",
+    "eslint-plugin-import": "^2.2.0",
+    "webpack": "^1.13.3",
+    "webpack-dev-server": "^1.16.2"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.16.0"
+  }
+}
