@@ -9,11 +9,35 @@
     "linebreak-style": 0,
     "indent": [
       "error",
-      2
+      4,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "no-trailing-spaces": [
+      "error",
+      {
+        "ignoreComments": true,
+        "skipBlankLines": true
+      }
+    ],
+    "no-underscore-dangle": [
+      "error",
+      {
+        "allow": [
+          "__REDUX_DEVTOOLS_EXTENSION__"
+        ]
+      }
     ],
     "comma-dangle": [
       "error",
-      "never"
+      {
+        "arrays": "ignore",
+        "objects": "never",
+        "imports": "never",
+        "exports": "never",
+        "functions": "ignore"
+      }
     ]
   },
   "parserOptions": {
