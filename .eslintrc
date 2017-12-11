@@ -2,7 +2,15 @@
   "parser": "babel-eslint",
   "extends": "airbnb-base",
   "rules": {
-    "semi": ["error", "never"]
+    "semi": [
+      "error",
+      "never"
+    ],
+    "linebreak-style": 0,
+    "indent": [
+      "error",
+      2
+    ]
   },
   "parserOptions": {
     "ecmaFeatures": {
