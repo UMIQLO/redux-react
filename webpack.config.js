@@ -11,6 +11,7 @@ const config = {
     },
     devtool: 'inline-source-map',
     devServer: {
+        overlay: true,
         contentBase: './',
         hot: true, // Live-reload
         inline: true,
@@ -22,8 +23,7 @@ const config = {
             {
                 test: /\.(js|jsx)$/,
                 use: [
-                    'babel-loader',
-                    //'eslint-loader'
+                    'babel-loader', // 'eslint-loader' for check format and syntax
                 ]
             }, {
                 test: /\.(sass|scss|css)/,
