@@ -38,7 +38,8 @@
         "exports": "never",
         "functions": "ignore"
       }
-    ]
+    ],
+    "no-console": "off"
   },
   "parserOptions": {
     "ecmaFeatures": {
