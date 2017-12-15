@@ -1,6 +1,19 @@
 // @flow
 import React from 'react'
 import { connect } from 'react-redux'
+import {
+    Button,
+    Input,
+    Checkbox,
+    List,
+    Container,
+    Divider,
+    Segment,
+    Label,
+    Header,
+    Icon
+} from 'semantic-ui-react'
+
 import * as actionCreators from './action'
 
 class MyComponent extends React.Component {
@@ -33,7 +46,10 @@ class MyComponent extends React.Component {
     }
 
     handleItemDelete = (item: Object) => {
-        this.props.onAddHistory({ ...item, type: 'delete' })
+        this.props.onAddHistory({
+            ...item,
+            type: 'delete'
+        })
         this.props.onItemDel(item.id)
     }
 
@@ -50,52 +66,67 @@ class MyComponent extends React.Component {
 
     render() {
         const { items, history } = this.props
-        return (
-            <div>
-                <input
-                    type="text"
-                    value={this.state.inputValue}
-                    onChange={this.handleTextChange}
-                />
-                <button
-                    color="primary"
-                    onClick={this.handleItemAdd}
-                >
-                    Add
-                </button>
-                {
-                    items.map(item => (
-                        <li key={item.id}>
-                            <input
-                                type="checkbox"
-                                id={item.id}
-                                onClick={() => {
-                                    this.handleItemDelete(item)
-                                }}
-                            />
-                            {item.text}
-                        </li>
-                    ))
-                }
-                <hr/>
-                <button
-                    color='primary'
-                    onClick={() => this.handleItemRestoreHistory(history[0])}
-                >
-                    Ctrl-Z
-                </button>
-                {
-                    history.map(item => (
-                        <li key={item.id}>
-                            {item.text}
-                        </li>
-                    ))
-                }
-            </div>
-        )
+        return <div>
+            <Container>
+                <Segment>
+                    <Header as='h4' color='purple'>ToDoApp</Header>
+                    <Input
+                        type="text"
+                        value={this.state.inputValue}
+                        onChange={this.handleTextChange}
+                    />
+                    <Button
+                        inverted color='purple'
+                        onClick={this.handleItemAdd}
+                    >
+                        Add
+                    </Button>
+                    <List>
+                        {
+                            items.map(item => (
+                                <List.Item key={item.id}>
+                                    {item.text}
+                                    <Icon
+                                        link name='close'
+                                        onClick={() => {
+                                            this.handleItemDelete(item)
+                                        }}
+                                    />
+                                </List.Item>
+                            ))
+                        }
+                    </List>
+                    {
+                        history.length > 0 ?
+                            <div>
+                                <Divider horizontal>History Log</Divider>
+                                <Button
+                                    inverted color='purple'
+                                    onClick={() => this.handleItemRestoreHistory(history[0])}
+                                >
+                                    Restore
+                                </Button>
+                                <List>
+                                    {
+                                        history.map(item => (
+                                            <List.Item key={item.id}>
+                                                {item.text}
+                                            </List.Item>
+                                        ))
+                                    }
+                                </List>
+                            </div>
+                            : ''
+                    }
+                </Segment>
+            </Container>
+        </div>
     }
 }
 
-const mapStateToProps = store => ({ items: store.items, history: store.history })
+const mapStateToProps = store => ({
+    items: store.items,
+    history: store.history
+})
 
 export default connect(mapStateToProps, actionCreators)(MyComponent)

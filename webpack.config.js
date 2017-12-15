@@ -25,7 +25,8 @@ const config = {
                 use: [
                     'babel-loader', // 'eslint-loader' for check format and syntax
                 ]
-            }, {
+            },
+            {
                 test: /\.(sass|scss|css)/,
                 use: [
                     'style-loader',
@@ -34,15 +35,20 @@ const config = {
                     'sass-loader?sourceMap',
                 ]
             },
+            {
+                test: /\.(woff|woff2|eot|ttf|otf|png|svg)$/,
+                use: ['file-loader']
+            }
         ]
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
     ],
-    stats: {
-        // Nice colored output
-        colors: true
-    }
+    stats:
+        {
+            // Nice colored output
+            colors: true
+        }
 }
 
 module.exports = config
